@@ -1,0 +1,33 @@
+CREATE DATABASE MYEXAMWEEK1;
+USE MYEXAMWEEK1;
+CREATE TABLE EXAM(
+ExamID INT NOT NULL PRIMARY KEY ;
+CourseENum NVARCHAR(50) NOT NULL,
+CourseName NVARCHAR(50)NOT NULL,
+Marks INT NOT NULL,
+)
+CREATE TABLE Time 
+(
+	ExamID int  NOT NULL FOREIGN KEY REFERENCES Exam(ExamID),
+	Duration varchar(50) NOT NULL,
+	Date date NOT NULL,
+	SessTime varchar(50) NOT NULL,
+	
+)
+
+CREATE TABLE Invigilator(
+	ExamID int  NOT NULL FOREIGN KEY REFERENCES Exam(ExamID),
+	InvID int NOT NULL PRIMARY KEY,
+	Name varchar(50) NOT NULL,
+	Number int NOT NULL,
+	EMail varchar(50) NOT NULL,
+)
+
+
+CREATE TABLE Room
+(
+	ExamID int  NOT NULL FOREIGN KEY REFERENCES Exam(ExamID),
+	R_no varchar(50) NOT NULL,
+	BuildingNo int NOT NULL,
+	
+)
